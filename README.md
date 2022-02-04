@@ -4,7 +4,7 @@ Amazon Sumerian Hosts is an experimental open source project that aims to make i
 
 You can clone the repository to obtain glTF character animation assets tailored to work well with the Host API. You can use them as-is, modify them in DCC software such as [Blender](https://www.blender.org/) or use them as a guide to develop your own 3D assets.
 
-The easiest way to start using the API is to include the build file that corresponds with the rendering engine you are using. See the [Getting Started](#Getting-Started) guide for a walkthrough using this method and the [API Documentation](https://aws-samples.github.io/amazon-sumerian-hosts/) for more detailed information on the classes and methods available. Amazon Sumerian Hosts is a published [npm](https://www.npmjs.com/) package, so alternatively you can install in an existing Node.js project by running `npm install --save-dev amazon-sumerian-hosts`. If you'd like to pull the gitub repository and create your own build, see [Building the Package](#Building-the-Package) for prerequisites and instructions on how to do that.
+The easiest way to start using the API is to include the build file that corresponds with the rendering engine you are using. See the [Getting Started](#getting-started) guide for a walkthrough using this method and the [API Documentation](https://aws-samples.github.io/amazon-sumerian-hosts/) for more detailed information on the classes and methods available. Amazon Sumerian Hosts is a published [npm](https://www.npmjs.com/) package, so alternatively you can install in an existing Node.js project by running `npm install --save-dev amazon-sumerian-hosts`. If you'd like to pull the gitub repository and create your own build, see [Building the Package](#building-the-package) for prerequisites and instructions on how to do that.
 
 ## License
 
@@ -23,7 +23,7 @@ This guide steps through the creation of [examples/three.html](examples/three.ht
   - [Creating a scene in Babylon.js](https://doc.babylonjs.com/babylon101/first#your-own-html)
   
 
-Jump to [Getting started in three.js](#Getting-started-in-three.js) for instructions specific to three.js or [Getting started in Babylon.js](#Getting-started-in-Babylon.js) for instructions specific to Babylon.js.
+Jump to [Getting started in three.js](#getting-started-in-threejs) for instructions specific to three.js or [Getting started in Babylon.js](#getting-started-in-babylonjs) for instructions specific to Babylon.js.
 
 ## Getting started in three.js
 
@@ -198,7 +198,7 @@ window.AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 });
 ```
 
-Replace `<Enter Cognito Identity Pool ID here>` with the id you created in the [Prerequisites](#Prerequisites) section. Make sure to set the region to the one you created your Cognito Identity Pool in. Using CognitoIdentityCredentials is just one example of how you can authenticate your host to access Polly. See the [AWS SDK documentation](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Credentials.html) to see other credentials classes you can use.
+Replace `<Enter Cognito Identity Pool ID here>` with the id you created in the [Prerequisites](#prerequisites) section. Make sure to set the region to the one you created your Cognito Identity Pool in. Using CognitoIdentityCredentials is just one example of how you can authenticate your host to access Polly. See the [AWS SDK documentation](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Credentials.html) to see other credentials classes you can use.
 
 ### Step 6. Initializing the Host TextToSpeechFeature
 
@@ -1175,7 +1175,7 @@ window.AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 });
 ```
 
-Replace `<Enter Cognito Identity Pool ID here>` with the id you created in the [Prerequisites](#Prerequisites) section. Make sure to set the region to the one you created your Cognito Identity Pool in. Using CognitoIdentityCredentials is just one example of how you can authenticate your host to access Polly. See the [AWS SDK documentation](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Credentials.html) to see other credentials classes you can use.
+Replace `<Enter Cognito Identity Pool ID here>` with the id you created in the [Prerequisites](#prerequisites) section. Make sure to set the region to the one you created your Cognito Identity Pool in. Using CognitoIdentityCredentials is just one example of how you can authenticate your host to access Polly. See the [AWS SDK documentation](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Credentials.html) to see other credentials classes you can use.
 
 ### Step 6. Initializing the Host TextToSpeechFeature
 
