@@ -11,19 +11,21 @@ The easiest way to start using the API is to include the build file that corresp
 This library is licensed under the MIT-0 License. See the [LICENSE](LICENSE) file. The assets within examples are licensed under the CC-BY-4.0 License. See the [LICENSE](examples/assets/LICENSE) file.
 <br/><br/>
 
-# [Getting Started](#Getting-Started)
+# Getting Started
 
 This guide steps through the creation of [examples/three.html](examples/three.html) and [examples/babylon.html](examples/babylon.html), resulting in an interactive 3D character that animates and speaks the text you input into the textarea, rendered in the Web rendering engine of your choice.
 
-## [Prerequisites](#Prerequisites)
+## Prerequisites
 
 - Complete steps 1 & 2 of the [AWS SDK for Javascript Getting Started in a Browser Script](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/getting-started-browser.html) tutorial to generate an Amazon Cognito Identity Pool with an Amazon Polly policy to enable browser script access to Amazon Polly.
-- Be familiar with how to create a scene in either [three.js](https://threejs.org/) or [Babylon.js](https://www.babylonjs.com/) Web rendering engines. - [Creating a scene in three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene)
+- Be familiar with how to create a scene in either [three.js](https://threejs.org/) or [Babylon.js](https://www.babylonjs.com/) Web rendering engines.
+  - [Creating a scene in three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene)
   - [Creating a scene in Babylon.js](https://doc.babylonjs.com/babylon101/first#your-own-html)
+  
 
 Jump to [Getting started in three.js](#Getting-started-in-three.js) for instructions specific to three.js or [Getting started in Babylon.js](#Getting-started-in-Babylon.js) for instructions specific to Babylon.js.
 
-## [Getting started in three.js](#Getting-started-in-three.js)
+## Getting started in three.js
 
 ### Step 1. Adding Script Dependencies
 
@@ -97,7 +99,7 @@ Our example is going to load several glTF assets so there will be a short time w
     animation: spin 2s linear infinite;
     position: fixed;
   }
-
+  
   @-webkit-keyframes spin {
     0% {
       -webkit-transform: rotate(0deg);
@@ -106,7 +108,7 @@ Our example is going to load several glTF assets so there will be a short time w
       -webkit-transform: rotate(360deg);
     }
   }
-
+  
   @keyframes spin {
     0% {
       transform: rotate(0deg);
@@ -274,14 +276,14 @@ Now we'll start setting up the visuals.
   function render() {
     requestAnimationFrame(render);
     controls.update();
-
+  
     renderFn.forEach(fn => {
       fn();
     });
-
+  
     renderer.render(scene, camera);
   }
-
+  
   render();
   ```
 
@@ -555,7 +557,7 @@ Here we pass all of our assets and variables to the `createHost` function. This 
     const {name} = clip;
     const config = gestureConfig[name];
     THREE.AnimationUtils.makeClipAdditive(clip);
-
+  
     if (config !== undefined) {
       config.queueOptions.forEach((option, index) => {
         // Create a subclip for each range in queueOptions
@@ -591,7 +593,7 @@ Next we create the animations that will allow the host to perform gestures in ti
   host.AnimationFeature.addLayer('Emote', {
     transitionTime: 0.5,
   });
-
+  
   emoteClips.forEach(clip => {
     const {name} = clip;
     host.AnimationFeature.addAnimation(
@@ -612,7 +614,7 @@ Next we create the animations that can be used as full body and face reactions. 
     blendMode: HOST.anim.LayerBlendModes.Additive,
   });
   host.AnimationFeature.setLayerWeight('Viseme', 0);
-
+  
   // Slice off the reference frame
   const blendStateOptions = lipsyncClips.map(clip => {
     THREE.AnimationUtils.makeClipAdditive(clip);
@@ -643,7 +645,7 @@ We're also using `THREE.AnimationUtils.subclip` to remove frame 0 from the clips
     host.AnimationFeature.addLayer(config.name, {
       blendMode: HOST.anim.LayerBlendModes.Additive,
     });
-
+  
     // Find each pose clip and make it additive
     config.blendStateOptions.forEach(clipConfig => {
       const clip = poiClips.find(clip => clip.name === clipConfig.clip);
@@ -656,16 +658,16 @@ We're also using `THREE.AnimationUtils.subclip` to remove frame 0 from the clips
         30
       );
     });
-
+  
     host.AnimationFeature.addAnimation(
       config.name,
       config.animation,
       HOST.anim.AnimationTypes.blend2d,
       {...config}
     );
-
+  
     host.AnimationFeature.playAnimation(config.name, config.animation);
-
+  
     // Find and store reference objects
     config.reference = character.getObjectByName(
       config.reference.replace(':', '')
@@ -1000,7 +1002,7 @@ Now that you've demonstrated your hosts running locally, consider publishing the
 - [Publishing a Web Application Using AWS Amplify](https://docs.sumerian.amazonaws.com/tutorials/create/solutions/gltf-viewer-amplify-public/)
 - [Privately Publish a Web Application Using AWS Amplify](https://docs.sumerian.amazonaws.com/tutorials/create/solutions/gltf-viewer-amplify-private/)
 
-## [Getting started in Babylon.js](#Getting-started-in-Babylon.js) 
+## Getting started in Babylon.js
 
 ### Step 1. Adding Script Dependencies
 
@@ -1075,7 +1077,7 @@ Our example is going to load several glTF assets so there will be a short time w
     animation: spin 2s linear infinite;
     position: fixed;
   }
-
+  
   @-webkit-keyframes spin {
     0% {
       -webkit-transform: rotate(0deg);
@@ -1084,7 +1086,7 @@ Our example is going to load several glTF assets so there will be a short time w
       -webkit-transform: rotate(360deg);
     }
   }
-
+  
   @keyframes spin {
     0% {
       transform: rotate(0deg);
@@ -1506,12 +1508,12 @@ Here we pass all of our assets and variables to the `createHost` function. This 
     transitionTime: 0.5,
     blendMode: HOST.anim.LayerBlendModes.Additive,
   });
-
+  
   gestureClips.forEach(clip => {
     const {name} = clip;
     const config = gestureConfig[name];
     BABYLON.AnimationGroup.MakeAnimationAdditive(clip);
-
+  
     if (config !== undefined) {
       // Add the clip to each queueOption so it can be split up
       config.queueOptions.forEach((option, index) => {
@@ -1543,7 +1545,7 @@ Next we create the animations that will allow the host to perform gestures in ti
   host.AnimationFeature.addLayer('Emote', {
     transitionTime: 0.5,
   });
-
+  
   emoteClips.forEach(clip => {
     const {name} = clip;
     host.AnimationFeature.addAnimation(
@@ -1595,7 +1597,7 @@ Each blendStateOptions object also contains a `from` and `to` property. The firs
     host.AnimationFeature.addLayer(config.name, {
       blendMode: HOST.anim.LayerBlendModes.Additive,
     });
-
+  
     // Find each pose clip and make it additive
     config.blendStateOptions.forEach(clipConfig => {
       clip = poiClips.find(clip => clip.name === clipConfig.clip);
@@ -1604,16 +1606,16 @@ Each blendStateOptions object also contains a `from` and `to` property. The firs
       clipConfig.from = 1 / 30;
       clipConfig.to = 2 / 30;
     });
-
+  
     host.AnimationFeature.addAnimation(
       config.name,
       config.animation,
       HOST.anim.AnimationTypes.blend2d,
       {...config}
     );
-
+  
     host.AnimationFeature.playAnimation(config.name, config.animation);
-
+  
     // Find and store the reference object
     config.reference = children.find(
       child => child.name === config.reference
@@ -1947,7 +1949,7 @@ Now that you've demonstrated your hosts running locally, consider publishing the
 - [Publishing a Web Application Using AWS Amplify](https://docs.sumerian.amazonaws.com/tutorials/create/solutions/gltf-viewer-amplify-public/)
 - [Privately Publish a Web Application Using AWS Amplify](https://docs.sumerian.amazonaws.com/tutorials/create/solutions/gltf-viewer-amplify-private/)
 
-# [Building the Package](#Building-the-Package)
+# Building the Package
 
 ## Prerequisites  
 
